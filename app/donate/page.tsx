@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { usePaystackPayment } from "react-paystack";
+// import { usePaystackPayment } from "react-paystack";
 import Link from "next/link";
 
 const AMOUNTS = [5000, 10000, 25000, 50000];
@@ -33,11 +33,10 @@ export default function DonatePage() {
     },
   } as any;
 
-  const initPaystack = usePaystackPayment(config);
+  // const initPaystack = usePaystackPayment(config);
 
   const onSuccess = () => {
     setLoading(false);
-    (window as any).__showToast?.("🎉 Thank you! Your donation was successful.");
   };
 
   const onClose = () => {
@@ -48,7 +47,7 @@ export default function DonatePage() {
     e.preventDefault();
     if (!email || !name || amount < 100) return;
     setLoading(true);
-    initPaystack({ onSuccess, onClose });
+    // initPaystack({ onSuccess, onClose })
   };
 
   return (
