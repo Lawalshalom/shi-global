@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ────────────────────────────────────────── */
+:root {
+  --green-dark: #1a4731;
+  --green: #2d6a4f;
+  --green-mid: #40916c;
+  --green-light: #74c69d;
+  --green-pale: #d8f3dc;
+  --orange: #e07a28;
+  --orange-light: #f4a261;
+  --cream: #f8f5f0;
+  --neutral-dark: #1c1c1c;
+  --neutral-mid: #6b6b6b;
+  --neutral-soft: #a0a0a0;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-hover: 0 12px 40px rgba(0,0,0,0.14);
+
+  /* ── Type scale (mobile-first, overridden per breakpoint) ── */
+  --text-xs: 0.7rem;
+  --text-sm: 0.8rem;
+  --text-base: 0.88rem;
+  --text-md: 0.95rem;
+  --text-lg: 1rem;
+  --text-xl: 1.1rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem;
+  --text-4xl: 1.8rem;
+  --text-5xl: 2.2rem;
+  --text-hero: clamp(1.8rem, 8vw, 3rem);
+
+  /* Section-level type tokens */
+  --section-tag-size: 0.72rem;
+  --section-title-size: clamp(1.6rem, 5vw, 2.2rem);
+  --section-subtitle-size: 0.95rem;
+  --body-size: 0.9rem;
+  --body-lg-size: 0.95rem;
+  --nav-size: 0.88rem;
+  --btn-size: 0.88rem;
+  --caption-size: 0.75rem;
+}
+
+/* ── sm: 390px (standard mobile) ─────────────────────────── */
+@media (min-width: 390px) {
+  :root {
+    --text-base: 0.9rem;
+    --text-md: 0.98rem;
+    --text-lg: 1.05rem;
+    --text-xl: 1.15rem;
+    --section-tag-size: 0.74rem;
+    --section-title-size: clamp(1.7rem, 5vw, 2.3rem);
+    --section-subtitle-size: 0.98rem;
+    --body-size: 0.92rem;
+  }
+}
+
+/* ── md: 768px (tablet) ───────────────────────────────────── */
+@media (min-width: 768px) {
+  :root {
+    --text-base: 0.95rem;
+    --text-md: 1rem;
+    --text-lg: 1.1rem;
+    --text-xl: 1.2rem;
+    --text-2xl: 1.35rem;
+    --text-3xl: 1.65rem;
+    --text-4xl: 2rem;
+    --text-5xl: 2.6rem;
+    --text-hero: clamp(2.2rem, 6vw, 3.6rem);
+    --section-tag-size: 0.76rem;
+    --section-title-size: clamp(1.9rem, 4vw, 2.6rem);
+    --section-subtitle-size: 1.02rem;
+    --body-size: 0.95rem;
+    --body-lg-size: 1.02rem;
+    --nav-size: 0.9rem;
+    --btn-size: 0.92rem;
+    --caption-size: 0.78rem;
+  }
+}
+
+/* ── lg: 1024px (desktop) ────────────────────────────────── */
+@media (min-width: 1024px) {
+  :root {
+    --text-base: 1rem;
+    --text-md: 1.05rem;
+    --text-lg: 1.15rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.8rem;
+    --text-4xl: 2.4rem;
+    --text-5xl: 3rem;
+    --text-hero: clamp(2.6rem, 5vw, 4.2rem);
+    --section-tag-size: 0.78rem;
+    --section-title-size: clamp(2rem, 4vw, 2.8rem);
+    --section-subtitle-size: 1.08rem;
+    --body-size: 1rem;
+    --body-lg-size: 1.1rem;
+    --nav-size: 0.92rem;
+    --btn-size: 0.95rem;
+    --caption-size: 0.82rem;
+  }
+}
+
+/* ── xl: 1440px (large desktop) ─────────────────────────── */
+@media (min-width: 1440px) {
+  :root {
+    --text-base: 1.05rem;
+    --text-lg: 1.2rem;
+    --text-xl: 1.35rem;
+    --text-2xl: 1.6rem;
+    --text-3xl: 2rem;
+    --text-4xl: 2.6rem;
+    --text-5xl: 3.5rem;
+    --text-hero: clamp(3rem, 5vw, 4.8rem);
+    --section-title-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    --section-subtitle-size: 1.15rem;
+    --body-size: 1.05rem;
+    --body-lg-size: 1.15rem;
+    --nav-size: 0.95rem;
+    --btn-size: 1rem;
+    --caption-size: 0.85rem;
+  }
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--body-size);
+  color: var(--neutral-dark);
+  background: var(--cream);
+  line-height: 1.6;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: var(--green-mid); border-radius: 3px; }
+
+/* ── Typography ──────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+}
+
+/* ── Utility classes ──────────────────────────────────────── */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-tag {
+  display: inline-block;
+  background: rgba(45,106,79,0.1);
+  color: var(--green);
+  font-size: var(--section-tag-size);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: var(--section-title-size);
+  color: var(--neutral-dark);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: var(--neutral-mid);
+  font-size: var(--section-subtitle-size);
+  max-width: 580px;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: var(--btn-size);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: none;
+}
+.btn-primary {
+  background: var(--orange);
+  color: white;
+}
+.btn-primary:hover { background: #c4671e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(224,122,40,0.35); }
+.btn-green {
+  background: var(--green);
+  color: white;
+}
+.btn-green:hover { background: var(--green-dark); transform: translateY(-2px); }
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+.btn-outline-green {
+  background: transparent;
+  color: var(--green);
+  border: 2px solid var(--green);
+}
+.btn-outline-green:hover { background: var(--green); color: white; }
+
+/* ── Fade-in animation ────────────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Pattern background ───────────────────────────────────── */
+.pattern-bg {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+  position: relative;
+}
+.pattern-bg .section-title { color: white; }
+.pattern-bg .section-subtitle { color: rgba(255,255,255,0.75); }
+
+/* ── Form styles ──────────────────────────────────────────── */
+.form-group {
+  margin-bottom: 1.1rem;
+}
+.form-group label {
+  display: block;
+  font-size: var(--caption-size);
+  font-weight: 600;
+  color: var(--neutral-dark);
+  margin-bottom: 0.4rem;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-md);
+  background: white;
+  color: var(--neutral-dark);
+  transition: border-color 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(45,106,79,0.12);
+}
+
+/* ── Toast ────────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--green-dark);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  z-index: 9999;
+  transition: transform 0.35s ease;
+  white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
